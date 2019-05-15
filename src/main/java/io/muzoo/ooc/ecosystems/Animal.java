@@ -15,8 +15,6 @@ public abstract class Animal {
     private boolean alive;
     // The rabbit's position
     private Location location;
-    // The fox's food level, which is increased by eating rabbits.
-    private int foodLevel;
 
     protected abstract int getMaxAge();
     protected abstract double getBreedingProbability();
@@ -35,16 +33,6 @@ public abstract class Animal {
 //    protected void incrementAge() {
 //        age++;
 //        if (age > getMaxAge()) {
-//            alive = false;
-//        }
-//    }
-
-    /**
-     * Make this fox more hungry. This could result in the fox's death.
-     */
-//    protected void incrementHunger() {
-//        foodLevel--;
-//        if (foodLevel <= 0) {
 //            alive = false;
 //        }
 //    }
