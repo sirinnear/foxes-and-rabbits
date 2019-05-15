@@ -6,22 +6,11 @@ import java.util.Random;
 
 public abstract class Animal {
 
-    // The age at which a fox can start to breed.
-    private static int BREEDING_AGE;
-    // The age to which a fox can live.
-    private static int MAX_AGE;
-    // The likelihood of a fox breeding.
-    private static double BREEDING_PROBABILITY;
-    // The maximum number of births.
-    private static int MAX_LITTER_SIZE;
-    // The food value of a single rabbit. In effect, this is the
-    // number of steps a fox can go before it has to eat again.
-    private static int FOOD_VALUE;
     // A shared random number generator to control breeding.
-    private static final Random rand = new Random();
+//    protected static final Random rand = new Random();
 
     // The rabbit's age.
-//    private int age;
+    private int age;
     // Whether the rabbit is alive or not.
     private boolean alive;
     // The rabbit's position
@@ -29,59 +18,23 @@ public abstract class Animal {
     // The fox's food level, which is increased by eating rabbits.
     private int foodLevel;
 
-    public static int getBreedingAge() {
-        return BREEDING_AGE;
-    }
-
-    public static int getMaxAge() {
-        return MAX_AGE;
-    }
-
-    public static double getBreedingProbability() {
-        return BREEDING_PROBABILITY;
-    }
-
-    public static int getMaxLitterSize() {
-        return MAX_LITTER_SIZE;
-    }
-
-    public static int getFoodValue() {
-        return FOOD_VALUE;
-    }
-
-    public static Random getRand() {
-        return rand;
-    }
-
-    public static void setBreedingAge(int breedingAge) {
-        BREEDING_AGE = breedingAge;
-    }
-
-    public static void setMaxAge(int maxAge) {
-        MAX_AGE = maxAge;
-    }
-
-    public static void setBreedingProbability(double breedingProbability) {
-        BREEDING_PROBABILITY = breedingProbability;
-    }
-
-    public static void setMaxLitterSize(int maxLitterSize) {
-        MAX_LITTER_SIZE = maxLitterSize;
-    }
-
-    public static void setFoodValue(int foodValue) {
-        FOOD_VALUE = foodValue;
-    }
+    protected abstract int getMaxAge();
+    protected abstract double getBreedingProbability();
+    protected abstract int getMaxLitterSize();
+    protected abstract int getBreedingAge();
+    protected abstract Random getRand();
+    protected abstract int getAge();
 
     public Animal(){
+//        age = 0;
         alive = true;
     }
 
     public abstract void act(Field currentField, Field updatedField, List newAnimal);
 
-//    void incrementAge() {
+//    protected void incrementAge() {
 //        age++;
-//        if (age > MAX_AGE) {
+//        if (age > getMaxAge()) {
 //            alive = false;
 //        }
 //    }
@@ -89,7 +42,7 @@ public abstract class Animal {
     /**
      * Make this fox more hungry. This could result in the fox's death.
      */
-//    void incrementHunger() {
+//    protected void incrementHunger() {
 //        foodLevel--;
 //        if (foodLevel <= 0) {
 //            alive = false;
@@ -104,8 +57,8 @@ public abstract class Animal {
      */
 //    int breed() {
 //        int births = 0;
-//        if (canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
-//            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
+//        if (canBreed() && getRand().nextDouble() <= getBreedingProbability()) {
+//            births = getRand().nextInt(getMaxLitterSize()) + 1;
 //        }
 //        return births;
 //    }
@@ -114,7 +67,7 @@ public abstract class Animal {
      * A fox can breed if it has reached the breeding age.
      */
 //    boolean canBreed() {
-//        return age >= BREEDING_AGE;
+//        return age >= getBreedingAge();
 //    }
 
     /**
@@ -124,6 +77,10 @@ public abstract class Animal {
      */
     protected boolean isAlive() {
         return alive;
+    }
+
+    protected void setDead(){
+        alive = false;
     }
 
     /**
@@ -144,4 +101,6 @@ public abstract class Animal {
 //    public void setLocation(Location location) {
 //        this.location = location;
 //    }
+
+
 }

@@ -14,33 +14,26 @@ import java.util.Random;
 public class Fox extends Animal{
     // Characteristics shared by all foxes (static fields).
 
-    static {
-        setBreedingAge(10);
-        setMaxAge(150);
-        setBreedingProbability(0.09);
-        setMaxLitterSize(3);
-        setFoodValue(4);
-    }
     // The age at which a fox can start to breed.
-    private static final int BREEDING_AGE = getBreedingAge();
+    private static final int BREEDING_AGE = 10;
     // The age to which a fox can live.
-    private static final int MAX_AGE = getMaxAge();
+    private static final int MAX_AGE = 150;
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = getBreedingProbability();
+    private static final double BREEDING_PROBABILITY = 0.09;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = getMaxLitterSize();
+    private static final int MAX_LITTER_SIZE = 3;
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = getFoodValue();
+    private static final int RABBIT_FOOD_VALUE = 4;
     // A shared random number generator to control breeding.
-    private static final Random rand = getRand();
+    private static final Random rand = new Random();
 
     // Individual characteristics (instance fields).
 
     // The fox's age.
     private int age;
     // Whether the fox is alive or not.
-    private boolean alive;
+//    private boolean alive;
     // The fox's position
     private Location location;
     // The fox's food level, which is increased by eating rabbits.
@@ -54,7 +47,7 @@ public class Fox extends Animal{
      */
     public Fox(boolean randomAge) {
         age = 0;
-        alive = true;
+//        alive = true;
         if (randomAge) {
             age = rand.nextInt(MAX_AGE);
             foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
@@ -76,7 +69,7 @@ public class Fox extends Animal{
     public void act(Field currentField, Field updatedField, List newFoxes) {
         incrementAge();
         incrementHunger();
-        if (alive) {
+        if (isAlive()) {
             // New foxes are born into adjacent locations.
             int births = breed();
             for (int b = 0; b < births; b++) {
@@ -96,7 +89,7 @@ public class Fox extends Animal{
                 updatedField.place(this, newLocation);
             } else {
                 // can neither move nor stay - overcrowding - all locations taken
-                alive = false;
+                setDead();
             }
         }
     }
@@ -107,7 +100,7 @@ public class Fox extends Animal{
     private void incrementAge() {
         age++;
         if (age > MAX_AGE) {
-            alive = false;
+            setDead();
         }
     }
 
@@ -117,7 +110,7 @@ public class Fox extends Animal{
     private void incrementHunger() {
         foodLevel--;
         if (foodLevel <= 0) {
-            alive = false;
+            setDead();
         }
     }
 
@@ -137,7 +130,7 @@ public class Fox extends Animal{
             if (animal instanceof Rabbit) {
                 Rabbit rabbit = (Rabbit) animal;
                 if (rabbit.isAlive()) {
-                    rabbit.setEaten();
+                    rabbit.setDead();
                     foodLevel = RABBIT_FOOD_VALUE;
                     return where;
                 }
@@ -184,5 +177,35 @@ public class Fox extends Animal{
      */
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    @Override
+    protected int getMaxAge() {
+        return MAX_AGE;
+    }
+
+    @Override
+    protected double getBreedingProbability() {
+        return BREEDING_PROBABILITY;
+    }
+
+    @Override
+    protected int getMaxLitterSize() {
+        return MAX_LITTER_SIZE;
+    }
+
+    @Override
+    protected int getBreedingAge() {
+        return BREEDING_AGE;
+    }
+
+    @Override
+    protected Random getRand() {
+        return rand;
+    }
+
+    @Override
+    protected int getAge() {
+        return age;
     }
 }
