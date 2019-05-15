@@ -89,18 +89,20 @@ public abstract class Animal {
      * @param row The vertical coordinate of the location.
      * @param col The horizontal coordinate of the location.
      */
-//    public void setLocation(int row, int col) {
-//        this.location = new Location(row, col);
-//    }
+    public void setLocation(int row, int col) {
+        this.location = new Location(row, col);
+    }
 
     /**
      * Set the rabbit's location.
      *
      * @param location The rabbit's location.
      */
-//    public void setLocation(Location location) {
-//        this.location = location;
-//    }
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
-
+    public Location getLocation() {
+        return location;
+    }
 }

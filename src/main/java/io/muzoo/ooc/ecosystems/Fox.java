@@ -32,10 +32,6 @@ public class Fox extends Animal{
 
     // The fox's age.
     private int age;
-    // Whether the fox is alive or not.
-//    private boolean alive;
-    // The fox's position
-    private Location location;
     // The fox's food level, which is increased by eating rabbits.
     private int foodLevel;
 
@@ -75,14 +71,14 @@ public class Fox extends Animal{
             for (int b = 0; b < births; b++) {
                 Fox newFox = new Fox(false);
                 newFoxes.add(newFox);
-                Location loc = updatedField.randomAdjacentLocation(location);
+                Location loc = updatedField.randomAdjacentLocation(getLocation());
                 newFox.setLocation(loc);
                 updatedField.place(newFox, loc);
             }
             // Move towards the source of food if found.
-            Location newLocation = findFood(currentField, location);
+            Location newLocation = findFood(currentField, getLocation());
             if (newLocation == null) {  // no food found - move randomly
-                newLocation = updatedField.freeAdjacentLocation(location);
+                newLocation = updatedField.freeAdjacentLocation(getLocation());
             }
             if (newLocation != null) {
                 setLocation(newLocation);
@@ -158,25 +154,6 @@ public class Fox extends Animal{
      */
     private boolean canBreed() {
         return age >= BREEDING_AGE;
-    }
-
-    /**
-     * Set the animal's location.
-     *
-     * @param row The vertical coordinate of the location.
-     * @param col The horizontal coordinate of the location.
-     */
-    public void setLocation(int row, int col) {
-        this.location = new Location(row, col);
-    }
-
-    /**
-     * Set the fox's location.
-     *
-     * @param location The fox's location.
-     */
-    public void setLocation(Location location) {
-        this.location = location;
     }
 
     @Override

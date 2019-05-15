@@ -28,10 +28,6 @@ public class Rabbit extends Animal{
 
     // The rabbit's age.
     private int age;
-    // Whether the rabbit is alive or not.
-//    private boolean alive;
-    // The rabbit's position
-    private Location location;
 
     /**
      * Create a new rabbit. A rabbit may be created with age
@@ -60,11 +56,11 @@ public class Rabbit extends Animal{
             for (int b = 0; b < births; b++) {
                 Rabbit newRabbit = new Rabbit(false);
                 newRabbits.add(newRabbit);
-                Location loc = updatedField.randomAdjacentLocation(location);
+                Location loc = updatedField.randomAdjacentLocation(getLocation());
                 newRabbit.setLocation(loc);
                 updatedField.place(newRabbit, loc);
             }
-            Location newLocation = updatedField.freeAdjacentLocation(location);
+            Location newLocation = updatedField.freeAdjacentLocation(getLocation());
             // Only transfer to the updated field if there was a free location
             if (newLocation != null) {
                 setLocation(newLocation);
@@ -108,32 +104,6 @@ public class Rabbit extends Animal{
      */
     private boolean canBreed() {
         return age >= BREEDING_AGE;
-    }
-
-    /**
-     * Tell the rabbit that it's dead now :(
-     */
-//    public void setEaten() {
-//        alive = false;
-//    }
-
-    /**
-     * Set the animal's location.
-     *
-     * @param row The vertical coordinate of the location.
-     * @param col The horizontal coordinate of the location.
-     */
-    public void setLocation(int row, int col) {
-        this.location = new Location(row, col);
-    }
-
-    /**
-     * Set the rabbit's location.
-     *
-     * @param location The rabbit's location.
-     */
-    public void setLocation(Location location) {
-        this.location = location;
     }
 
     @Override
