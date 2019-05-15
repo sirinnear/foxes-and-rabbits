@@ -9,12 +9,14 @@ public abstract class Animal {
     // A shared random number generator to control breeding.
     protected static final Random rand = new Random();
 
-    // The rabbit's age.
+    // An animal's age.
     private int age;
-    // Whether the rabbit is alive or not.
+    // Whether the animal is alive or not.
     private boolean alive;
-    // The rabbit's position
+    // An animal's position
     private Location location;
+    // The animal's food level, which is increased by eating other animals.
+    private int foodLevel;
 
     protected abstract int getMaxAge();
     protected abstract double getBreedingProbability();
@@ -35,12 +37,13 @@ public abstract class Animal {
         }
     }
 
-    /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     *
-     * @return The number of births (may be zero).
-     */
+    protected void incrementHunger() {
+        foodLevel--;
+        if (foodLevel <= 0) {
+            setDead();
+        }
+    }
+
     int breed() {
         int births = 0;
         if (canBreed() && rand.nextDouble() <= getBreedingProbability()) {
@@ -49,18 +52,10 @@ public abstract class Animal {
         return births;
     }
 
-    /**
-     * A fox can breed if it has reached the breeding age.
-     */
     boolean canBreed() {
         return age >= getBreedingAge();
     }
 
-    /**
-     * Check whether the fox is alive or not.
-     *
-     * @return True if the fox is still alive.
-     */
     protected boolean isAlive() {
         return alive;
     }
@@ -69,21 +64,10 @@ public abstract class Animal {
         alive = false;
     }
 
-    /**
-     * Set the animal's location.
-     *
-     * @param row The vertical coordinate of the location.
-     * @param col The horizontal coordinate of the location.
-     */
     public void setLocation(int row, int col) {
         this.location = new Location(row, col);
     }
 
-    /**
-     * Set the rabbit's location.
-     *
-     * @param location The rabbit's location.
-     */
     public void setLocation(Location location) {
         this.location = location;
     }
@@ -98,5 +82,13 @@ public abstract class Animal {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getFoodLevel() {
+        return foodLevel;
+    }
+
+    public void setFoodLevel(int foodLevel) {
+        this.foodLevel = foodLevel;
     }
 }

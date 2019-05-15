@@ -26,10 +26,6 @@ public class Fox extends Animal{
     // number of steps a fox can go before it has to eat again.
     private static final int RABBIT_FOOD_VALUE = 4;
 
-    // Individual characteristics (instance fields).
-
-    // The fox's food level, which is increased by eating rabbits.
-    private int foodLevel;
 
     /**
      * Create a fox. A fox can be created as a new born (age zero
@@ -40,10 +36,10 @@ public class Fox extends Animal{
     public Fox(boolean randomAge) {
         if (randomAge) {
             setAge(rand.nextInt(MAX_AGE));
-            foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
+            setFoodLevel(rand.nextInt(RABBIT_FOOD_VALUE));
         } else {
             // leave age at 0
-            foodLevel = RABBIT_FOOD_VALUE;
+            setFoodLevel(RABBIT_FOOD_VALUE);
         }
     }
 
@@ -87,12 +83,12 @@ public class Fox extends Animal{
     /**
      * Make this fox more hungry. This could result in the fox's death.
      */
-    private void incrementHunger() {
-        foodLevel--;
-        if (foodLevel <= 0) {
-            setDead();
-        }
-    }
+//    private void incrementHunger() {
+//        foodLevel--;
+//        if (foodLevel <= 0) {
+//            setDead();
+//        }
+//    }
 
     /**
      * Tell the fox to look for rabbits adjacent to its current location.
@@ -111,7 +107,7 @@ public class Fox extends Animal{
                 Rabbit rabbit = (Rabbit) animal;
                 if (rabbit.isAlive()) {
                     rabbit.setDead();
-                    foodLevel = RABBIT_FOOD_VALUE;
+                    setFoodLevel(RABBIT_FOOD_VALUE);
                     return where;
                 }
             }
