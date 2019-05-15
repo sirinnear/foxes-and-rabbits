@@ -77,9 +77,7 @@ public abstract class Animal {
         alive = true;
     }
 
-//    public Animal(boolean randomAge){
-//        alive = true;
-//    }
+    public abstract void act(Field currentField, Field updatedField, List newAnimal);
 
 //    void incrementAge() {
 //        age++;

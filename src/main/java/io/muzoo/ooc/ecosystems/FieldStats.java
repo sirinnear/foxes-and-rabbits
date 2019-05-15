@@ -82,7 +82,7 @@ public class FieldStats {
 
     /**
      * Determine whether the simulation is still viable.
-     * I.e., should it continue to run.
+     * I.e., should it continue to act.
      *
      * @return true If there is more than one species alive.
      */

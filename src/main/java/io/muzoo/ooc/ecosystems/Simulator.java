@@ -103,15 +103,7 @@ public class Simulator {
         // let all animals act
         for (Iterator<Animal> iter = animals.iterator(); iter.hasNext(); ) {
             Animal animal = iter.next();
-            if (animal instanceof Rabbit) {
-                Rabbit rabbit = (Rabbit) animal;
-                rabbit.run(updatedField, newAnimals);
-            } else if (animal instanceof Fox) {
-                Fox fox = (Fox) animal;
-                fox.hunt(field, updatedField, newAnimals);
-            } else {
-                System.out.println("found unknown animal");
-            }
+            animal.act(field, updatedField, newAnimals);
         }
         // add new born animals to the list of animals
         animals.addAll(newAnimals);

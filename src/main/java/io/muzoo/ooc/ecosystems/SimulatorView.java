@@ -111,7 +111,7 @@ public class SimulatorView extends JFrame {
     }
 
     /**
-     * Determine whether the simulation should continue to run.
+     * Determine whether the simulation should continue to act.
      *
      * @return true If there is more than one species alive.
      */
