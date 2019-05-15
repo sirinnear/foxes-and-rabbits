@@ -10,19 +10,25 @@ import java.util.Random;
  * @author David J. Barnes and Michael Kolling
  * @version 2002.10.28
  */
-public class Rabbit {
+public class Rabbit extends Animal{
     // Characteristics shared by all rabbits (static fields).
 
+    static {
+        setBreedingAge(5);
+        setMaxAge(50);
+        setBreedingProbability(0.15);
+        setMaxLitterSize(5);
+    }
     // The age at which a rabbit can start to breed.
-    private static final int BREEDING_AGE = 5;
+    private static final int BREEDING_AGE = getBreedingAge();
     // The age to which a rabbit can live.
-    private static final int MAX_AGE = 50;
+    private static final int MAX_AGE = getMaxAge();
     // The likelihood of a rabbit breeding.
-    private static final double BREEDING_PROBABILITY = 0.15;
+    private static final double BREEDING_PROBABILITY = getBreedingProbability();
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 5;
+    private static final int MAX_LITTER_SIZE = getMaxLitterSize();
     // A shared random number generator to control breeding.
-    private static final Random rand = new Random();
+    private static final Random rand = getRand();
 
     // Individual characteristics (instance fields).
 

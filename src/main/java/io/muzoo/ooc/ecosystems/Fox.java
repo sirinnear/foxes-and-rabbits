@@ -11,22 +11,29 @@ import java.util.Random;
  * @author David J. Barnes and Michael Kolling
  * @version 2002.10.28
  */
-public class Fox {
+public class Fox extends Animal{
     // Characteristics shared by all foxes (static fields).
 
+    static {
+        setBreedingAge(10);
+        setMaxAge(150);
+        setBreedingProbability(0.09);
+        setMaxLitterSize(3);
+        setFoodValue(4);
+    }
     // The age at which a fox can start to breed.
-    private static final int BREEDING_AGE = 10;
+    private static final int BREEDING_AGE = getBreedingAge();
     // The age to which a fox can live.
-    private static final int MAX_AGE = 150;
+    private static final int MAX_AGE = getMaxAge();
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.09;
+    private static final double BREEDING_PROBABILITY = getBreedingProbability();
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 3;
+    private static final int MAX_LITTER_SIZE = getMaxLitterSize();
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = 4;
+    private static final int RABBIT_FOOD_VALUE = getFoodValue();
     // A shared random number generator to control breeding.
-    private static final Random rand = new Random();
+    private static final Random rand = getRand();
 
     // Individual characteristics (instance fields).
 
