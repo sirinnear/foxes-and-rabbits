@@ -101,8 +101,8 @@ public class Simulator {
         newAnimals.clear();
 
         // let all animals act
-        for (Iterator iter = animals.iterator(); iter.hasNext(); ) {
-            Object animal = iter.next();
+        for (Iterator<Animal> iter = animals.iterator(); iter.hasNext(); ) {
+            Animal animal = iter.next();
             if (animal instanceof Rabbit) {
                 Rabbit rabbit = (Rabbit) animal;
                 rabbit.run(updatedField, newAnimals);
