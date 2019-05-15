@@ -68,17 +68,6 @@ public class Rabbit extends Animal{
     }
 
     /**
-     * Increase the age.
-     * This could result in the rabbit's death.
-     */
-//    private void incrementAge() {
-//        age++;
-//        if (age > MAX_AGE) {
-//            setDead();
-//        }
-//    }
-
-    /**
      * Generate a number representing the number of births,
      * if it can breed.
      *
