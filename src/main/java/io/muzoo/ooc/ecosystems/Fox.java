@@ -30,8 +30,6 @@ public class Fox extends Animal{
 
     // Individual characteristics (instance fields).
 
-    // The fox's age.
-    private int age;
     // The fox's food level, which is increased by eating rabbits.
     private int foodLevel;
 
@@ -42,10 +40,8 @@ public class Fox extends Animal{
      * @param randomAge If true, the fox will have random age and hunger level.
      */
     public Fox(boolean randomAge) {
-        age = 0;
-//        alive = true;
         if (randomAge) {
-            age = rand.nextInt(MAX_AGE);
+            setAge(rand.nextInt(MAX_AGE));
             foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
         } else {
             // leave age at 0
@@ -93,12 +89,12 @@ public class Fox extends Animal{
     /**
      * Increase the age. This could result in the fox's death.
      */
-    private void incrementAge() {
-        age++;
-        if (age > MAX_AGE) {
-            setDead();
-        }
-    }
+//    private void incrementAge() {
+//        age++;
+//        if (age > MAX_AGE) {
+//            setDead();
+//        }
+//    }
 
     /**
      * Make this fox more hungry. This could result in the fox's death.
@@ -153,7 +149,7 @@ public class Fox extends Animal{
      * A fox can breed if it has reached the breeding age.
      */
     private boolean canBreed() {
-        return age >= BREEDING_AGE;
+        return getAge() >= BREEDING_AGE;
     }
 
     @Override
@@ -179,10 +175,5 @@ public class Fox extends Animal{
     @Override
     protected Random getRand() {
         return rand;
-    }
-
-    @Override
-    protected int getAge() {
-        return age;
     }
 }

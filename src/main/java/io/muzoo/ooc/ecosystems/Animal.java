@@ -21,21 +21,20 @@ public abstract class Animal {
     protected abstract int getMaxLitterSize();
     protected abstract int getBreedingAge();
     protected abstract Random getRand();
-    protected abstract int getAge();
 
     public Animal(){
-//        age = 0;
+        age = 0;
         alive = true;
     }
 
     public abstract void act(Field currentField, Field updatedField, List newAnimal);
 
-//    protected void incrementAge() {
-//        age++;
-//        if (age > getMaxAge()) {
-//            alive = false;
-//        }
-//    }
+    protected void incrementAge() {
+        age++;
+        if (age > getMaxAge()) {
+            setDead();
+        }
+    }
 
     /**
      * Generate a number representing the number of births,
@@ -92,5 +91,13 @@ public abstract class Animal {
 
     public Location getLocation() {
         return location;
+    }
+
+    protected int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
