@@ -81,16 +81,6 @@ public class Fox extends Animal{
     }
 
     /**
-     * Make this fox more hungry. This could result in the fox's death.
-     */
-//    private void incrementHunger() {
-//        foodLevel--;
-//        if (foodLevel <= 0) {
-//            setDead();
-//        }
-//    }
-
-    /**
      * Tell the fox to look for rabbits adjacent to its current location.
      *
      * @param field    The field in which it must look.
