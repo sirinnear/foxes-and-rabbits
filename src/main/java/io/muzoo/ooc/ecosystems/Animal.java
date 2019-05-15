@@ -7,7 +7,7 @@ import java.util.Random;
 public abstract class Animal {
 
     // A shared random number generator to control breeding.
-//    protected static final Random rand = new Random();
+    protected static final Random rand = new Random();
 
     // The rabbit's age.
     private int age;
@@ -20,7 +20,6 @@ public abstract class Animal {
     protected abstract double getBreedingProbability();
     protected abstract int getMaxLitterSize();
     protected abstract int getBreedingAge();
-    protected abstract Random getRand();
 
     public Animal(){
         age = 0;

@@ -21,8 +21,6 @@ public class Rabbit extends Animal{
     private static final double BREEDING_PROBABILITY = 0.15;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 5;
-    // A shared random number generator to control breeding.
-    private static final Random rand = new Random();
 
     // Individual characteristics (instance fields).
 
@@ -121,10 +119,5 @@ public class Rabbit extends Animal{
     @Override
     protected int getBreedingAge() {
         return BREEDING_AGE;
-    }
-
-    @Override
-    protected Random getRand() {
-        return rand;
     }
 }

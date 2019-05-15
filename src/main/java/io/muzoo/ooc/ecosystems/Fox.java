@@ -25,8 +25,6 @@ public class Fox extends Animal{
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
     private static final int RABBIT_FOOD_VALUE = 4;
-    // A shared random number generator to control breeding.
-    private static final Random rand = new Random();
 
     // Individual characteristics (instance fields).
 
@@ -170,10 +168,5 @@ public class Fox extends Animal{
     @Override
     protected int getBreedingAge() {
         return BREEDING_AGE;
-    }
-
-    @Override
-    protected Random getRand() {
-        return rand;
     }
 }
