@@ -168,15 +168,6 @@ public class Fox extends Animal{
     }
 
     /**
-     * Check whether the fox is alive or not.
-     *
-     * @return True if the fox is still alive.
-     */
-    public boolean isAlive() {
-        return alive;
-    }
-
-    /**
      * Set the animal's location.
      *
      * @param row The vertical coordinate of the location.

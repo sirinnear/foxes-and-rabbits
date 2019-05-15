@@ -21,7 +21,7 @@ public abstract class Animal {
     private static final Random rand = new Random();
 
     // The rabbit's age.
-    private int age;
+//    private int age;
     // Whether the rabbit is alive or not.
     private boolean alive;
     // The rabbit's position
@@ -53,20 +53,6 @@ public abstract class Animal {
         return rand;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public int getFoodLevel() {
-        return foodLevel;
-    }
-
-    public boolean getAlive(){ return alive; }
-
     public static void setBreedingAge(int breedingAge) {
         BREEDING_AGE = breedingAge;
     }
@@ -87,33 +73,13 @@ public abstract class Animal {
         FOOD_VALUE = foodValue;
     }
 
-    public void setFoodLevel(int foodLevel) {
-        this.foodLevel = foodLevel;
-    }
-
-    public void setAlive(boolean alive) {
-        this.alive = alive;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
     public Animal(){
-
+        alive = true;
     }
 
-    public Animal(boolean randomAge){
-        setAge(0);
-        setAlive(true);
-        if (randomAge) {
-            setAge(getRand().nextInt(MAX_AGE));
-        }
-    }
+//    public Animal(boolean randomAge){
+//        alive = true;
+//    }
 
 //    void incrementAge() {
 //        age++;
@@ -158,9 +124,9 @@ public abstract class Animal {
      *
      * @return True if the fox is still alive.
      */
-//    public boolean isAlive() {
-//        return alive;
-//    }
+    protected boolean isAlive() {
+        return alive;
+    }
 
     /**
      * Set the animal's location.

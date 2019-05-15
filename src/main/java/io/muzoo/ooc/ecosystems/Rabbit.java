@@ -118,15 +118,6 @@ public class Rabbit extends Animal{
     }
 
     /**
-     * Check whether the rabbit is alive or not.
-     *
-     * @return true if the rabbit is still alive.
-     */
-    public boolean isAlive() {
-        return alive;
-    }
-
-    /**
      * Tell the rabbit that it's dead now :(
      */
     public void setEaten() {
