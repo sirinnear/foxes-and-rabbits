@@ -41,20 +41,20 @@ public abstract class Animal {
      *
      * @return The number of births (may be zero).
      */
-//    int breed() {
-//        int births = 0;
-//        if (canBreed() && getRand().nextDouble() <= getBreedingProbability()) {
-//            births = getRand().nextInt(getMaxLitterSize()) + 1;
-//        }
-//        return births;
-//    }
+    int breed() {
+        int births = 0;
+        if (canBreed() && rand.nextDouble() <= getBreedingProbability()) {
+            births = rand.nextInt(getMaxLitterSize()) + 1;
+        }
+        return births;
+    }
 
     /**
      * A fox can breed if it has reached the breeding age.
      */
-//    boolean canBreed() {
-//        return age >= getBreedingAge();
-//    }
+    boolean canBreed() {
+        return age >= getBreedingAge();
+    }
 
     /**
      * Check whether the fox is alive or not.
