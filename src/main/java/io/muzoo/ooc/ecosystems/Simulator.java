@@ -27,6 +27,8 @@ public class Simulator {
     private static final double RABBIT_CREATION_PROBABILITY = 0.05;
     // The probability that a tiger will be created in any given grid position.
     private static final double TIGER_CREATION_PROBABILITY = 0.015;
+    // The probability that an actor will be created in any given grid position.
+    private static final double ACTOR_CREATION_PROBABILITY = 0.005;
 
     // The list of actors in the field
     private List actors;
@@ -153,6 +155,8 @@ public class Simulator {
                     actorGenerator.generateActor(actors, field, row, col, "rabbit");
                 }else if (rand.nextDouble() <= TIGER_CREATION_PROBABILITY) {
                     actorGenerator.generateActor(actors, field, row, col, "tiger");
+                }else if (rand.nextDouble() <= ACTOR_CREATION_PROBABILITY) {
+                    actorGenerator.generateActor(actors, field, row, col, "hunter");
                 }
                 // else leave the location empty.
             }

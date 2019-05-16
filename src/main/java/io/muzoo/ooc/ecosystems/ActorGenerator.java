@@ -2,9 +2,9 @@ package io.muzoo.ooc.ecosystems;
 
 import java.util.List;
 
-public class AnimalGenerator{
+public class ActorGenerator {
 
-    protected void generateAnimal(List animals, Field field, int row, int col, String animal){
+    protected void generateActor(List animals, Field field, int row, int col, String animal){
         switch (animal){
             case "rabbit":
                 Rabbit rabbit = new Rabbit(true);
@@ -23,6 +23,13 @@ public class AnimalGenerator{
                 animals.add(tiger);
                 tiger.setLocation(row, col);
                 field.place(tiger, row, col);
+                break;
+            case "hunter":
+                Hunter hunter = new Hunter(row, col);
+                animals.add(hunter);
+                hunter.setLocation(row, col);
+                field.place(hunter, row, col);
+                break;
             default:
 
         }
