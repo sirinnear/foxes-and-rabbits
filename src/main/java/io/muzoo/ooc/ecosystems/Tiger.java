@@ -56,7 +56,7 @@ public class Tiger extends Animal{
         }
     }
 
-    private Location findFood(Field field, Location location) {
+    protected Location findFood(Field field, Location location) {
         Iterator adjacentLocations =
                 field.adjacentLocations(location);
         while (adjacentLocations.hasNext()) {

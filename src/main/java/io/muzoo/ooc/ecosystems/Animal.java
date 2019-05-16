@@ -30,6 +30,8 @@ public abstract class Animal {
 
     public abstract void act(Field currentField, Field updatedField, List newAnimal);
 
+    protected abstract Location findFood(Field field, Location location);
+
     protected void incrementAge() {
         age++;
         if (age > getMaxAge()) {

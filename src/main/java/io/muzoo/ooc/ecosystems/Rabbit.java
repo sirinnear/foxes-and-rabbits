@@ -68,6 +68,11 @@ public class Rabbit extends Animal{
     }
 
     @Override
+    protected Location findFood(Field field, Location location) {
+        return null;
+    }
+
+    @Override
     protected int getMaxAge() {
         return MAX_AGE;
     }
