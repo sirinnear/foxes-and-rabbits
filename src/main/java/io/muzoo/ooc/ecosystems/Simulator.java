@@ -25,8 +25,8 @@ public class Simulator {
     private static final double FOX_CREATION_PROBABILITY = 0.03;
     // The probability that a rabbit will be created in any given grid position.
     private static final double RABBIT_CREATION_PROBABILITY = 0.05;
-    // The probability that a rabbit will be created in any given grid position.
-    private static final double TIGER_CREATION_PROBABILITY = 0.02;
+    // The probability that a tiger will be created in any given grid position.
+    private static final double TIGER_CREATION_PROBABILITY = 0.015;
 
     // The list of actors in the field
     private List actors;
@@ -71,6 +71,7 @@ public class Simulator {
         view.setColor(Fox.class, Color.blue);
         view.setColor(Rabbit.class, Color.orange);
         view.setColor(Tiger.class, Color.magenta);
+        view.setColor(Hunter.class, Color.darkGray);
 
         // Setup a valid starting point.
         reset();
@@ -105,8 +106,8 @@ public class Simulator {
 
         // let all actors act
         for (Iterator<Actor> iter = actors.iterator(); iter.hasNext(); ) {
-            Actor animal = iter.next();
-            animal.act(field, updatedField, newActors);
+            Actor actor = iter.next();
+            actor.act(field, updatedField, newActors);
         }
         // add new born actors to the list of actors
         actors.addAll(newActors);
@@ -142,16 +143,16 @@ public class Simulator {
      */
     private void populate(Field field) {
         Random rand = new Random();
-        AnimalGenerator animalGenerator = new AnimalGenerator();
+        ActorGenerator actorGenerator = new ActorGenerator();
         field.clear();
         for (int row = 0; row < field.getDepth(); row++) {
             for (int col = 0; col < field.getWidth(); col++) {
                 if (rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
-                   animalGenerator.generateAnimal(actors, field, row, col, "fox");
+                   actorGenerator.generateActor(actors, field, row, col, "fox");
                 } else if (rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
-                    animalGenerator.generateAnimal(actors, field, row, col, "rabbit");
+                    actorGenerator.generateActor(actors, field, row, col, "rabbit");
                 }else if (rand.nextDouble() <= TIGER_CREATION_PROBABILITY) {
-                    animalGenerator.generateAnimal(actors, field, row, col, "tiger");
+                    actorGenerator.generateActor(actors, field, row, col, "tiger");
                 }
                 // else leave the location empty.
             }
