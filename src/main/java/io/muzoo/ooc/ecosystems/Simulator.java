@@ -142,24 +142,16 @@ public class Simulator {
      */
     private void populate(Field field) {
         Random rand = new Random();
+        AnimalGenerator animalGenerator = new AnimalGenerator();
         field.clear();
         for (int row = 0; row < field.getDepth(); row++) {
             for (int col = 0; col < field.getWidth(); col++) {
                 if (rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
-                    Fox fox = new Fox(true);
-                    animals.add(fox);
-                    fox.setLocation(row, col);
-                    field.place(fox, row, col);
+                   animalGenerator.generateAnimal(animals, field, row, col, "fox");
                 } else if (rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
-                    Rabbit rabbit = new Rabbit(true);
-                    animals.add(rabbit);
-                    rabbit.setLocation(row, col);
-                    field.place(rabbit, row, col);
+                    animalGenerator.generateAnimal(animals, field, row, col, "rabbit");
                 }else if (rand.nextDouble() <= TIGER_CREATION_PROBABILITY) {
-                    Tiger tiger = new Tiger(true);
-                    animals.add(tiger);
-                    tiger.setLocation(row, col);
-                    field.place(tiger, row, col);
+                    animalGenerator.generateAnimal(animals, field, row, col, "tiger");
                 }
                 // else leave the location empty.
             }
