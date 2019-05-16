@@ -14,21 +14,13 @@ import java.awt.Color;
  * @author David J. Barnes and Michael Kolling
  * @version 2002.10.28
  */
-public class Simulator {
+public class Simulator extends ActorGenerator{
     // The private static final variables represent 
     // configuration information for the simulation.
     // The default width for the grid.
     private static final int DEFAULT_WIDTH = 50;
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 50;
-    // The probability that a fox will be created in any given grid position.
-    private static final double FOX_CREATION_PROBABILITY = 0.03;
-    // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.05;
-    // The probability that a tiger will be created in any given grid position.
-    private static final double TIGER_CREATION_PROBABILITY = 0.015;
-    // The probability that an actor will be created in any given grid position.
-    private static final double HUNTER_CREATION_PROBABILITY = 0.005;
 
     // The list of actors in the field
     private List actors;
@@ -138,29 +130,8 @@ public class Simulator {
         view.showStatus(step, field);
     }
 
-    /**
-     * Populate a field with foxes and rabbits.
-     *
-     * @param field The field to be populated.
-     */
-    private void populate(Field field) {
-        Random rand = new Random();
-        ActorGenerator actorGenerator = new ActorGenerator();
-        field.clear();
-        for (int row = 0; row < field.getDepth(); row++) {
-            for (int col = 0; col < field.getWidth(); col++) {
-                if (rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
-                   actorGenerator.generateActor(actors, field, row, col, "fox");
-                } else if (rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
-                    actorGenerator.generateActor(actors, field, row, col, "rabbit");
-                }else if (rand.nextDouble() <= TIGER_CREATION_PROBABILITY) {
-                    actorGenerator.generateActor(actors, field, row, col, "tiger");
-                }else if (rand.nextDouble() <= HUNTER_CREATION_PROBABILITY) {
-                    actorGenerator.generateActor(actors, field, row, col, "hunter");
-                }
-                // else leave the location empty.
-            }
-        }
-        Collections.shuffle(actors);
+    @Override
+    public List getActors() {
+        return actors;
     }
 }

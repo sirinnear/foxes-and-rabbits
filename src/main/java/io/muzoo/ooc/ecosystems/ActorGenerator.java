@@ -6,6 +6,37 @@ import java.util.Random;
 
 public abstract class ActorGenerator {
 
+    // The probability that a fox will be created in any given grid position.
+    private static final double FOX_CREATION_PROBABILITY = 0.03;
+    // The probability that a rabbit will be created in any given grid position.
+    private static final double RABBIT_CREATION_PROBABILITY = 0.05;
+    // The probability that a tiger will be created in any given grid position.
+    private static final double TIGER_CREATION_PROBABILITY = 0.015;
+    // The probability that an actor will be created in any given grid position.
+    private static final double HUNTER_CREATION_PROBABILITY = 0.005;
+
+
+
+    protected void populate(Field field) {
+        Random rand = new Random();
+        field.clear();
+        for (int row = 0; row < field.getDepth(); row++) {
+            for (int col = 0; col < field.getWidth(); col++) {
+                if (rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
+                    generateActor(getActors(), field, row, col, "fox");
+                } else if (rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
+                    generateActor(getActors(), field, row, col, "rabbit");
+                }else if (rand.nextDouble() <= TIGER_CREATION_PROBABILITY) {
+                    generateActor(getActors(), field, row, col, "tiger");
+                }else if (rand.nextDouble() <= HUNTER_CREATION_PROBABILITY) {
+                    generateActor(getActors(), field, row, col, "hunter");
+                }
+                // else leave the location empty.
+            }
+        }
+        Collections.shuffle(getActors());
+    }
+
     protected void generateActor(List actors, Field field, int row, int col, String animal){
         switch (animal){
             case "rabbit":
@@ -37,4 +68,6 @@ public abstract class ActorGenerator {
 
         }
     }
+
+    public abstract List getActors();
 }
