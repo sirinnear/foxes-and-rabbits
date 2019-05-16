@@ -1,8 +1,10 @@
 package io.muzoo.ooc.ecosystems;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
-public class ActorGenerator {
+public abstract class ActorGenerator {
 
     protected void generateActor(List actors, Field field, int row, int col, String animal){
         switch (animal){
