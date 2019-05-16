@@ -4,32 +4,33 @@ import java.util.List;
 
 public class ActorGenerator {
 
-    protected void generateActor(List animals, Field field, int row, int col, String animal){
+    protected void generateActor(List actors, Field field, int row, int col, String animal){
         switch (animal){
             case "rabbit":
                 Rabbit rabbit = new Rabbit(true);
-                animals.add(rabbit);
+                actors.add(rabbit);
                 rabbit.setLocation(row, col);
                 field.place(rabbit, row, col);
                 break;
             case "fox":
                 Fox fox = new Fox(true);
-                animals.add(fox);
+                actors.add(fox);
                 fox.setLocation(row, col);
                 field.place(fox, row, col);
                 break;
             case "tiger":
                 Tiger tiger = new Tiger(true);
-                animals.add(tiger);
+                actors.add(tiger);
                 tiger.setLocation(row, col);
                 field.place(tiger, row, col);
                 break;
             case "hunter":
                 Hunter hunter = new Hunter(row, col);
-                animals.add(hunter);
+                actors.add(hunter);
                 hunter.setLocation(row, col);
                 field.place(hunter, row, col);
                 break;
+
             default:
 
         }
