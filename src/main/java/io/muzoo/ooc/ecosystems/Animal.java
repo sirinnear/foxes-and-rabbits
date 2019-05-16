@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public abstract class Animal {
+public abstract class Animal extends Actor{
 
     // A shared random number generator to control breeding.
     protected static final Random rand = new Random();
@@ -60,6 +60,10 @@ public abstract class Animal {
 
     protected boolean isAlive() {
         return alive;
+    }
+
+    public boolean isActive() {
+        return isAlive();
     }
 
     protected void setDead(){
