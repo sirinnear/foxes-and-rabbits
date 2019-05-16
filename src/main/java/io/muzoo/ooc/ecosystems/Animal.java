@@ -62,10 +62,6 @@ public abstract class Animal extends Actor{
         return alive;
     }
 
-    public boolean isActive() {
-        return isAlive();
-    }
-
     protected void setDead(){
         alive = false;
     }

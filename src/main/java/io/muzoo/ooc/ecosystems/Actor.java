@@ -5,5 +5,4 @@ import java.util.List;
 public abstract class Actor {
 
     public abstract void act(Field currentField, Field updatedField, List newAnimal);
-    public abstract boolean isActive();
 }
